@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend w-25">
+                <select class="custom-select" name="category" id="category"
+                        aria-label="Example select with button addon">
+                    <option selected>All</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <input type="text" class="form-control" aria-label="Search Text" name="search-text" id="search-text">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="search">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="books-list">
+        {% include 'home/bookList.html.twig' %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('home') }}
+{% endblock %}

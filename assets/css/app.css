@@ -1,0 +1,32 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+.book-title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.discription {
+    height: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.book-image {
+    height: 600px;
+}
+
+.cart-dropdown-menu {
+    font-size: 12px;
+    min-width: 300px;
+}
+
+.remove-cart.close {
+    border: 1px solid red;
+    border-radius: 10px;
+    font-size: 14px;
+    float: none;
+    color: red;
+}

@@ -1,0 +1,18 @@
+<div class="card-columns mb-3 text-center book-list-container">
+    {% for book in books %}
+        <div class="card mb-4 box-shadow">
+            <img class="card-img-top book-image" src="{{ book.image }}" alt="{{ book.name }}">
+            <div class="card-header book-title">
+                <h4 class="my-0 font-weight-normal book-title">{{ book.name }}</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">Rs {{ book.price }}</h1>
+                <div class="category">Category: {{ book.category.name }}</div>
+                <div class="description">
+                    {{ book.description }}
+                </div>
+                <button type="button" class="btn btn-lg btn-block btn-outline-primary add-to-cart-btn" id="add-to-cart" data-book-id="{{ book.id }}">Add to Cart</button>
+            </div>
+        </div>
+    {% endfor %}
+</div>
