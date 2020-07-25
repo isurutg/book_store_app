@@ -8,10 +8,8 @@
             <div class="card-body">
                 <h1 class="card-title pricing-card-title">Rs {{ book.price }}</h1>
                 <div class="category">Category: {{ book.category.name }}</div>
-                <div class="description">
-                    {{ book.description }}
-                </div>
-                <button type="button" class="btn btn-lg btn-block btn-outline-primary add-to-cart-btn" id="add-to-cart" data-book-id="{{ book.id }}">Add to Cart</button>
+                <div class="message mb-4"></div>
+                <button type="button" class="btn btn-lg btn-block btn-outline-primary add-to-cart-btn" id="add-to-cart" data-book-id="{{ book.id }}" data-book-name="{{ book.name }}">Add to Cart</button>
             </div>
         </div>
     {% endfor %}

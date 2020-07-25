@@ -33,7 +33,14 @@ $(function () {
     // add to cart
     $('#books-list').on('click', '#add-to-cart', function () {
         const bookId = $(this).data('book-id');
-        addToCart(bookId);
+        const bookName = $(this).data('book-name');
+        addToCart(bookId, bookName);
+        (function (el) {
+            setTimeout(function () {
+                el.children().remove();
+            }, 2000);
+        }($(this).parent('.card-body').children('.message').append('<div class="alert alert-success" role="alert">added to the cart.</div>')));
+
     });
 
     // remove from cart
@@ -43,7 +50,7 @@ $(function () {
     });
 
     // add to cart function
-    function addToCart(bookId) {
+    function addToCart(bookId, name) {
         let cart = [];
         let itemExist = false;
         if (localStorage.getItem('cart')) {

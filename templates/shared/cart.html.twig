@@ -5,7 +5,7 @@
         <span class="pl-2">(Rs {{ totalPrice | number_format(2) }})</span>
     {% endif %}
 </button>
-<div class="cart-dropdown-menu dropdown-menu dropdown-menu-right" aria-labelledby="cartDropdown">
+<div class="cart-dropdown-menu dropdown-menu dropdown-menu-right text-center" aria-labelledby="cartDropdown">
     {% if cartItems is defined and cartItems | length > 0 %}
         {% for item in cartItems %}
             <div class="row align-items-center">
@@ -20,7 +20,14 @@
                 </div>
             </div>
         {% endfor %}
-        <a href="http://localhost:8000/checkout" class="btn btn-primary btn-lg active w-100" role="button"
+        {% if discount is defined and discount != 0 %}
+            <div class="row align-items-center">
+                <div class="col-5">Discounts</div>
+                <div class="col-2 text-right"></div>
+                <div class="col-2 text-right">Rs {{ discount }}</div>
+            </div>
+        {% endif %}
+        <a href="http://localhost:8000/checkout" class="btn btn-primary btn-lg active w-75 align-self-center m-3 mb-0" role="button"
            aria-pressed="true">Checkout</a>
     {% else %}
         <div class="text-center"> Cart Is Empty</div>

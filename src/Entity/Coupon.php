@@ -4,6 +4,11 @@ namespace App\Entity;
 
 use App\Repository\CouponRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\LessThan;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Positive;
+use Symfony\Component\Validator\Constraints\Url;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * @ORM\Entity(repositoryClass=CouponRepository::class)
@@ -71,5 +76,13 @@ class Coupon
         $this->discount = $discount;
 
         return $this;
+    }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('code', new NotBlank());
+        $metadata->addPropertyConstraint('discount', new NotBlank());
+        $metadata->addPropertyConstraint('discount', new Positive());
+        $metadata->addPropertyConstraint('discount', new LessThan(1));
     }
 }

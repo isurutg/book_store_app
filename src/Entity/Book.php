@@ -4,6 +4,10 @@ namespace App\Entity;
 
 use App\Repository\BookRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Positive;
+use Symfony\Component\Validator\Constraints\Url;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * @ORM\Entity(repositoryClass=BookRepository::class)
@@ -122,5 +126,15 @@ class Book
         $this->image = $image;
 
         return $this;
+    }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('name', new NotBlank());
+        $metadata->addPropertyConstraint('description', new NotBlank());
+        $metadata->addPropertyConstraint('author', new NotBlank());
+        $metadata->addPropertyConstraint('price', new NotBlank());
+        $metadata->addPropertyConstraint('price', new Positive());
+        $metadata->addPropertyConstraint('image', new Url());
     }
 }

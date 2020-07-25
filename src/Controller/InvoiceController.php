@@ -54,7 +54,8 @@ class InvoiceController extends AbstractController
         return $this->render('shared/cart.html.twig', [
             'controller_name' => 'CartController',
             'cartItems' => $invoice->getCartItems(),
-            'totalPrice' => $invoice->getTotalAfterDiscount()
+            'totalPrice' => $invoice->getTotalAfterDiscount(),
+            'discount' => $invoice->getDiscount()
         ]);
     }
 }

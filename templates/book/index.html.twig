@@ -1,0 +1,43 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Books{% endblock %}
+
+{% block body %}
+    <h1>Books</h1>
+
+    <a class="btn btn-primary mb-5" href="{{ path('book_new') }}">Create new</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ book.name }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.category.name }}</td>
+                <td>{{ book.price }}</td>
+                <td><img height="50px" src="{{ book.image }}"/></td>
+                <td>
+                    <a href="{{ path('book_show', {'id': book.id}) }}">show</a>
+                    <a href="{{ path('book_edit', {'id': book.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

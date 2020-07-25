@@ -64,7 +64,7 @@ class InvoiceService
             } else {
                 $shoppingCart[$item["bookId"]] = new CartItem($shoppingCart[$item["bookId"]]);
                 $shoppingCart[$item["bookId"]]->setCount($shoppingCart[$item["bookId"]]->getCount() + 1);
-                $shoppingCart[$item["bookId"]]->setTotalItemPrice($shoppingCart[$item["bookId"]]->getTotalItemPrice() * $shoppingCart[$item["bookId"]]->getCount());
+                $shoppingCart[$item["bookId"]]->setTotalItemPrice($shoppingCart[$item["bookId"]]->getDetails()->getPrice() * $shoppingCart[$item["bookId"]]->getCount());
             }
         }
 
