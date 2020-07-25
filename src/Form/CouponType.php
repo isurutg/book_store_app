@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Coupon;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,7 @@ class CouponType extends AbstractType
         $builder
             ->add('code')
             ->add('description')
-            ->add('discount')
+            ->add('discount', NumberType::class)
         ;
     }
 

@@ -4,10 +4,9 @@ namespace App\Entity;
 
 use App\Repository\CouponRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\LessThan;
+use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
+use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Positive;
-use Symfony\Component\Validator\Constraints\Url;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
@@ -33,7 +32,7 @@ class Coupon
     private $description;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="decimal", precision=2, scale=2)
      */
     private $discount;
 
@@ -66,12 +65,12 @@ class Coupon
         return $this;
     }
 
-    public function getDiscount(): ?int
+    public function getDiscount(): ?float
     {
         return $this->discount;
     }
 
-    public function setDiscount(int $discount): self
+    public function setDiscount(float $discount): self
     {
         $this->discount = $discount;
 
@@ -82,7 +81,7 @@ class Coupon
     {
         $metadata->addPropertyConstraint('code', new NotBlank());
         $metadata->addPropertyConstraint('discount', new NotBlank());
-        $metadata->addPropertyConstraint('discount', new Positive());
-        $metadata->addPropertyConstraint('discount', new LessThan(1));
+        $metadata->addPropertyConstraint('discount', new GreaterThanOrEqual(0));
+        $metadata->addPropertyConstraint('discount', new LessThanOrEqual(1));
     }
 }
