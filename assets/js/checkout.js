@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 $(function () {
-    const baseUrl = "http://localhost:8000"
+    const baseUrl = "http://localhost:8001"
     let couponCode = '';
 
     // disable cart function in invoice

@@ -15,5 +15,5 @@ require('popper.js');
 require('bootstrap');
 
 $(function () {
-    const baseUrl = "http://localhost:8000"
+    const baseUrl = "http://localhost:8001"
 });

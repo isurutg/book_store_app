@@ -15,7 +15,7 @@ require('popper.js');
 require('bootstrap');
 
 $(function () {
-    const baseUrl = "http://localhost:8000"
+    const baseUrl = "http://localhost:8001"
 
     // load cart at the start from data in localstorage
     $(document).ready(function () {
